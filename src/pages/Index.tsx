@@ -18,6 +18,7 @@ import {
 import SplitText from '../components/ui/SplitText';
 import TextType from '../components/ui/TextType';
 import TestimonialMarquee from '../components/ui/TestimonialMarquee';
+import Footer from '@/components/Footer';
 
 const Index: React.FC = () => {
   const handleAnimationComplete = () => {
@@ -293,6 +294,7 @@ const Index: React.FC = () => {
         </div>
         <TestimonialMarquee />
       </section>
+      <Footer/>
     </div>
   );
 };
