@@ -19,6 +19,7 @@ import {
   faEnvelope
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import Footer from '@/components/Footer';
 
 const About: React.FC = () => {
   const competencies = [
@@ -229,6 +230,7 @@ const About: React.FC = () => {
           </div>
         </div>
       </section>
+      <Footer/>
     </div>
   );
 };

@@ -14,6 +14,7 @@ import {
   faFilter,
   faExternalLinkAlt
 } from '@fortawesome/free-solid-svg-icons';
+import Footer from '@/components/Footer';
 
 const Events: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState('All');
@@ -277,6 +278,7 @@ const Events: React.FC = () => {
           </div>
         </div>
       </section>
+      <Footer/>
     </div>
   );
 };

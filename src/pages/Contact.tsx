@@ -16,6 +16,7 @@ import {
   faGithub, 
   faTwitter 
 } from '@fortawesome/free-brands-svg-icons';
+import Footer from '@/components/Footer';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -327,6 +328,7 @@ const Contact: React.FC = () => {
           </div>
         </div>
       </section>
+      <Footer/>
     </div>
   );
 };

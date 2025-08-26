@@ -20,6 +20,7 @@ import {
   faCalendarAlt,
   faMapMarkerAlt
 } from '@fortawesome/free-solid-svg-icons';
+import Footer from '@/components/Footer';
 
 const Resume: React.FC = () => {
   const education = [
@@ -397,6 +398,7 @@ const Resume: React.FC = () => {
           </div>
         </div>
       </section>
+      <Footer/>
     </div>
   );
 };

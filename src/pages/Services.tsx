@@ -15,6 +15,7 @@ import {
   faEnvelope
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import Footer from '@/components/Footer';
 
 const Services: React.FC = () => {
   const services = [
@@ -250,6 +251,7 @@ const Services: React.FC = () => {
           </div>
         </div>
       </section>
+      <Footer/>
     </div>
   );
 };
