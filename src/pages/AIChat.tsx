@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPaperPlane, faRobot, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faPaperPlane, faRobot, faUser, faHome } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 import Orb from '../components/ui/Orb';
 
 interface Message {
@@ -16,12 +17,13 @@ const AIChat: React.FC = () => {
       id: '1',
       content: "Hello! I'm Miracle's AI assistant. I can help answer questions about networking, IT services, projects, or anything else you'd like to know. How can I assist you today?",
       sender: 'ai',
-      timestamp: new Date()
-    }
+      timestamp: new Date(),
+    },
   ]);
   const [inputMessage, setInputMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -72,23 +74,22 @@ const AIChat: React.FC = () => {
       id: Date.now().toString(),
       content: inputMessage,
       sender: 'user',
-      timestamp: new Date()
+      timestamp: new Date(),
     };
 
-    setMessages(prev => [...prev, userMessage]);
+    setMessages((prev) => [...prev, userMessage]);
     setInputMessage('');
     setIsTyping(true);
 
-    // Simulate AI thinking time
     setTimeout(() => {
       const aiResponse: Message = {
         id: (Date.now() + 1).toString(),
         content: simulateAIResponse(inputMessage),
         sender: 'ai',
-        timestamp: new Date()
+        timestamp: new Date(),
       };
 
-      setMessages(prev => [...prev, aiResponse]);
+      setMessages((prev) => [...prev, aiResponse]);
       setIsTyping(false);
     }, 1000 + Math.random() * 2000);
   };
@@ -100,19 +101,23 @@ const AIChat: React.FC = () => {
     }
   };
 
+  const handleReturnHome = () => {
+    navigate('/');
+  };
+
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="w-screen h-screen fixed inset-0 overflow-hidden">
       {/* Background Orb */}
       <div className="fixed inset-0 z-0">
         <Orb hue={280} hoverIntensity={0.3} rotateOnHover={true} />
       </div>
 
       {/* Chat Interface */}
-      <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
-        <div className="w-full max-w-4xl h-[80vh] glass-card rounded-2xl overflow-hidden flex flex-col">
-          
+      <div className="relative z-10 w-full h-full flex flex-col">
+        {/* Messages and Header Container */}
+        <div className="w-full flex-1 glass-card rounded-none overflow-hidden flex flex-col">
           {/* Header */}
-          <div className="glass-nav p-6 border-b border-white/10">
+          <div className="glass-nav p-2 border-b border-white/10 flex justify-between items-center">
             <div className="flex items-center space-x-4">
               <div className="w-12 h-12 glass-button rounded-full flex items-center justify-center">
                 <FontAwesomeIcon icon={faRobot} className="text-xl text-primary" />
@@ -122,10 +127,17 @@ const AIChat: React.FC = () => {
                 <p className="text-sm text-gray-400">Ask me anything about Miracle's expertise</p>
               </div>
             </div>
+            <button
+              onClick={handleReturnHome}
+              className="glass-button px-4 py-2 rounded-xl font-semibold text-white transition-all duration-300 hover:shadow-lg glow-primary flex items-center space-x-2"
+            >
+              <FontAwesomeIcon icon={faHome} />
+              <span>Return Home</span>
+            </button>
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-6 space-y-4">
+          <div className="flex-1 overflow-y-auto p-6 pb-24 space-y-4 scrollbar-hidden">
             {messages.map((message) => (
               <div
                 key={message.id}
@@ -139,22 +151,24 @@ const AIChat: React.FC = () => {
                   }`}
                 >
                   <div className="flex items-start space-x-3">
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-                      message.sender === 'user' ? 'bg-primary/20' : 'bg-accent/20'
-                    }`}>
-                      <FontAwesomeIcon 
-                        icon={message.sender === 'user' ? faUser : faRobot} 
+                    <div
+                      className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                        message.sender === 'user' ? 'bg-primary/20' : 'bg-accent/20'
+                      }`}
+                    >
+                      <FontAwesomeIcon
+                        icon={message.sender === 'user' ? faUser : faRobot}
                         className={`text-sm ${
                           message.sender === 'user' ? 'text-primary' : 'text-accent'
-                        }`} 
+                        }`}
                       />
                     </div>
                     <div className="flex-1">
                       <p className="text-sm leading-relaxed">{message.content}</p>
                       <span className="text-xs text-gray-400 mt-2 block">
-                        {message.timestamp.toLocaleTimeString([], { 
-                          hour: '2-digit', 
-                          minute: '2-digit' 
+                        {message.timestamp.toLocaleTimeString([], {
+                          hour: '2-digit',
+                          minute: '2-digit',
                         })}
                       </span>
                     </div>
@@ -173,8 +187,14 @@ const AIChat: React.FC = () => {
                     </div>
                     <div className="flex space-x-1">
                       <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                      <div
+                        className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                        style={{ animationDelay: '0.1s' }}
+                      ></div>
+                      <div
+                        className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                        style={{ animationDelay: '0.2s' }}
+                      ></div>
                     </div>
                   </div>
                 </div>
@@ -182,39 +202,50 @@ const AIChat: React.FC = () => {
             )}
             <div ref={messagesEndRef} />
           </div>
+        </div>
 
-          {/* Input */}
-          <div className="glass-nav p-6 border-t border-white/10">
-            <div className="flex space-x-4">
-              <div className="flex-1 relative">
-                <textarea
-                  value={inputMessage}
-                  onChange={(e) => setInputMessage(e.target.value)}
-                  onKeyPress={handleKeyPress}
-                  placeholder="Ask me about networking, projects, services, or anything else..."
-                  className="w-full bg-transparent border border-white/20 backdrop-blur-sm p-4 pr-12 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 resize-none"
-                  rows={1}
-                  style={{ minHeight: '2.5rem' }}
-                />
-              </div>
-              <button
-                onClick={handleSendMessage}
-                disabled={!inputMessage.trim() || isTyping}
-                className={`glass-button px-6 py-4 rounded-xl font-semibold text-white transition-all duration-300 hover-scale ${
-                  !inputMessage.trim() || isTyping
-                    ? 'opacity-50 cursor-not-allowed'
-                    : 'hover:shadow-lg glow-primary'
-                }`}
-              >
-                <FontAwesomeIcon icon={faPaperPlane} />
-              </button>
+        {/* Input Section - Fixed to Bottom */}
+        <div className="fixed bottom-0 left-0 right-0 glass-nav p-2 border-t border-white/10 z-20">
+          <div className="flex space-x-4">
+            <div className="flex-1 relative">
+              <textarea
+                value={inputMessage}
+                onChange={(e) => setInputMessage(e.target.value)}
+                onKeyPress={handleKeyPress}
+                placeholder="Ask me about networking, projects, services, or anything else..."
+                className="w-full bg-transparent border border-white/20 backdrop-blur-sm p-4 pr-12 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 resize-none"
+                rows={1}
+                style={{ minHeight: '2.5rem' }}
+              />
             </div>
-            <p className="text-xs text-gray-400 mt-2 text-center">
-              Press Enter to send • This is a demo AI assistant
-            </p>
+            <button
+              onClick={handleSendMessage}
+              disabled={!inputMessage.trim() || isTyping}
+              className={`glass-button px-6 py-4 rounded-xl font-semibold text-white transition-all duration-300 hover-scale ${
+                !inputMessage.trim() || isTyping
+                  ? 'opacity-50 cursor-not-allowed'
+                  : 'hover:shadow-lg glow-primary'
+              }`}
+            >
+              <FontAwesomeIcon icon={faPaperPlane} />
+            </button>
           </div>
+          <p className="text-xs text-gray-400 mt-2 text-center">
+            Press Enter to send • This is a demo AI assistant
+          </p>
         </div>
       </div>
+
+        <style>{`
+        .scrollbar-hidden {
+          -ms-overflow-style: none; /* IE and Edge */
+          scrollbar-width: none; /* Firefox */
+        }
+        .scrollbar-hidden::-webkit-scrollbar {
+          display: none; /* Chrome, Safari, and Opera */
+        }
+      `}</style>
+      
     </div>
   );
 };
