@@ -79,7 +79,7 @@ const Index: React.FC = () => {
 
 
                   <SplitText
-  text="Hello, I am "
+  text="Hello, I am miracle "
   className="text-2xl font-semibold text-center"
   delay={100}
   duration={0.6}
