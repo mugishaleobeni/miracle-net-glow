@@ -214,7 +214,7 @@ const Contact: React.FC = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full glass-card p-3 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+                      className="w-full bg-transparent border border-white/20 backdrop-blur-sm p-3 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
                       placeholder="Your full name"
                     />
                   </div>
@@ -230,7 +230,7 @@ const Contact: React.FC = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full glass-card p-3 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+                      className="w-full bg-transparent border border-white/20 backdrop-blur-sm p-3 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
                       placeholder="your.email@example.com"
                     />
                   </div>
@@ -248,7 +248,7 @@ const Contact: React.FC = () => {
                     value={formData.subject}
                     onChange={handleInputChange}
                     required
-                    className="w-full glass-card p-3 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+                    className="w-full bg-transparent border border-white/20 backdrop-blur-sm p-3 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
                     placeholder="What would you like to discuss?"
                   />
                 </div>
@@ -265,7 +265,7 @@ const Contact: React.FC = () => {
                     onChange={handleInputChange}
                     required
                     rows={6}
-                    className="w-full glass-card p-3 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 resize-none"
+                    className="w-full bg-transparent border border-white/20 backdrop-blur-sm p-3 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 resize-none"
                     placeholder="Tell me about your project or inquiry..."
                   />
                 </div>

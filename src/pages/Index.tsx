@@ -65,36 +65,67 @@ const Index: React.FC = () => {
     <div className="pt-16">
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center px-4">
-        <div className="text-center max-w-4xl mx-auto" data-aos="fade-up">
-          <div className="glass-card p-12 mb-8">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
-              <SplitText text="Miracle" className="gradient-text" />
-            </h1>
-            <h2 className="text-xl md:text-2xl text-gray-300 mb-4">
-              Networking Specialist | IT Enthusiast
-            </h2>
-            <div className="text-lg md:text-xl text-gray-400 mb-8 min-h-[2em]">
-              <TextType 
-                text="Building connected, secure, and efficient systems for tomorrow."
-                speed={80}
-                delay={2000}
-              />
+        <div className="max-w-7xl mx-auto" data-aos="fade-up">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            {/* Content Side */}
+            <div className="text-center lg:text-left">
+              <div className="glass-card p-8 lg:p-12">
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+                  <SplitText text="Miracle" className="gradient-text" />
+                </h1>
+                <h2 className="text-lg md:text-xl lg:text-2xl text-gray-300 mb-6">
+                  Networking Specialist | IT Enthusiast
+                </h2>
+                <div className="glass-card p-6 mb-8 bg-white/5 backdrop-blur-sm border border-white/10">
+                  <div className="text-base md:text-lg lg:text-xl text-gray-200 leading-relaxed min-h-[2em]">
+                    <TextType 
+                      text="Building connected, secure, and efficient systems for tomorrow."
+                      speed={80}
+                      delay={2000}
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                  <Link 
+                    to="/resume" 
+                    className="glass-button px-8 py-4 rounded-xl font-semibold text-white hover:shadow-lg transition-all duration-300 hover-scale glow-primary"
+                  >
+                    <FontAwesomeIcon icon={faDownload} className="mr-2" />
+                    View Resume
+                  </Link>
+                  <Link 
+                    to="/contact" 
+                    className="glass-button px-8 py-4 rounded-xl font-semibold text-white hover:shadow-lg transition-all duration-300 hover-scale glow-accent"
+                  >
+                    <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
+                    Contact Me
+                  </Link>
+                </div>
+              </div>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                to="/resume" 
-                className="glass-button px-8 py-4 rounded-xl font-semibold text-white hover:shadow-lg transition-all duration-300 hover-scale"
-              >
-                <FontAwesomeIcon icon={faDownload} className="mr-2" />
-                View Resume
-              </Link>
-              <Link 
-                to="/contact" 
-                className="glass-button px-8 py-4 rounded-xl font-semibold text-white hover:shadow-lg transition-all duration-300 hover-scale"
-              >
-                <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
-                Contact Me
-              </Link>
+
+            {/* Image Side */}
+            <div className="flex justify-center lg:justify-end">
+              <div className="relative">
+                <div className="w-80 h-80 lg:w-96 lg:h-96 glass-card rounded-3xl overflow-hidden glow-primary p-2">
+                  <img 
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=600&fit=crop&crop=face"
+                    alt="Miracle - Networking Specialist and IT Professional"
+                    className="w-full h-full object-cover rounded-2xl"
+                  />
+                </div>
+                {/* Floating elements */}
+                <div className="absolute -top-4 -right-4 glass-card p-3 rounded-xl animate-float">
+                  <FontAwesomeIcon icon={faNetworkWired} className="text-2xl text-primary" />
+                </div>
+                <div className="absolute -bottom-4 -left-4 glass-card p-3 rounded-xl animate-float" style={{ animationDelay: '1s' }}>
+                  <FontAwesomeIcon icon={faShield} className="text-2xl text-accent" />
+                </div>
+                <div className="absolute top-1/2 -right-8 glass-card p-2 rounded-lg animate-float" style={{ animationDelay: '0.5s' }}>
+                  <FontAwesomeIcon icon={faServer} className="text-lg text-primary" />
+                </div>
+              </div>
             </div>
           </div>
         </div>

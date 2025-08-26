@@ -192,7 +192,7 @@ const AIChat: React.FC = () => {
                   onChange={(e) => setInputMessage(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Ask me about networking, projects, services, or anything else..."
-                  className="w-full glass-card p-4 pr-12 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 resize-none"
+                  className="w-full bg-transparent border border-white/20 backdrop-blur-sm p-4 pr-12 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 resize-none"
                   rows={1}
                   style={{ minHeight: '2.5rem' }}
                 />
