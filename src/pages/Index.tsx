@@ -20,6 +20,9 @@ import TextType from '../components/ui/TextType';
 import TestimonialMarquee from '../components/ui/TestimonialMarquee';
 
 const Index: React.FC = () => {
+  const handleAnimationComplete = () => {
+  console.log('All letters have animated!');
+};
   const skills = [
     { icon: faNetworkWired, title: 'Networking Fundamentals', desc: 'TCP/IP, DNS, DHCP' },
     { icon: faDesktop, title: 'Cisco Technologies', desc: 'Packet Tracer, Routing & Switching' },
@@ -70,19 +73,41 @@ const Index: React.FC = () => {
             
             {/* Content Side */}
             <div className="text-center lg:text-left">
-              <div className="glass-card p-8 lg:p-12">
+              <div className="glass-card p-8 lg:p-4">
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
-                  <SplitText text="Miracle" className="gradient-text" />
+
+
+
+                  <SplitText
+  text="Hello, I am "
+  className="text-2xl font-semibold text-center"
+  delay={100}
+  duration={0.6}
+  ease="power3.out"
+  splitType="chars"
+  from={{ opacity: 0, y: 40 }}
+  to={{ opacity: 1, y: 0 }}
+  threshold={0.1}
+  rootMargin="-100px"
+  textAlign="center"
+  onLetterAnimationComplete={handleAnimationComplete}
+/>
+                
+                
+                
+                
                 </h1>
-                <h2 className="text-lg md:text-xl lg:text-2xl text-gray-300 mb-6">
+                <h2 className="text-lg md:text-xl lg:text-1xl text-gray-300 mb-6">
                   Networking Specialist | IT Enthusiast
                 </h2>
                 <div className="glass-card p-6 mb-8 bg-white/5 backdrop-blur-sm border border-white/10">
                   <div className="text-base md:text-lg lg:text-xl text-gray-200 leading-relaxed min-h-[2em]">
                     <TextType 
-                      text="Building connected, secure, and efficient systems for tomorrow."
-                      speed={80}
-                      delay={2000}
+                            text={["Building Secure & Reliable Networks", "Passionate About IT & Networking Solutions", "Empowering Businesses Through Technology","Certified Networking Specialist in Progress"]}
+                            typingSpeed={75}
+                            pauseDuration={1500}
+                            showCursor={true}
+                            cursorCharacter="|"
                     />
                   </div>
                 </div>
